@@ -4,7 +4,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { GraduationCap, Award, Briefcase, Code, Mail, Phone, MapPin, Calendar } from "lucide-react";
+import { GraduationCap, Award, Briefcase, Code, Mail, Phone, MapPin, Calendar, Download } from "lucide-react";
 
 interface ResumeModalProps {
   open: boolean;
@@ -15,8 +15,16 @@ const ResumeModal = ({ open, onOpenChange }: ResumeModalProps) => {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto bg-background border-primary/20">
-        <DialogHeader>
+        <DialogHeader className="flex flex-row items-center justify-between pr-8">
           <DialogTitle className="text-2xl font-display gradient-text">Gurumoorthi B — Resume</DialogTitle>
+          <a
+            href="/GURU_MOORTHI_B_2_Data_Analyst.pdf"
+            download="Gurumoorthi_B_Resume.pdf"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
+          >
+            <Download size={16} />
+            Download PDF
+          </a>
         </DialogHeader>
 
         <div className="space-y-6 text-sm">
