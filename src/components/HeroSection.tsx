@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Download, ChevronDown } from "lucide-react";
 import profileImage from "@/assets/profile-hero.png";
+import ResumeModal from "@/components/ResumeModal";
 
 const roles = ["Data Analyst", "Frontend Developer"];
 
@@ -9,6 +10,7 @@ const HeroSection = () => {
   const [currentRole, setCurrentRole] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const [resumeOpen, setResumeOpen] = useState(false);
 
   useEffect(() => {
     const role = roles[currentRole];
@@ -75,13 +77,14 @@ const HeroSection = () => {
             >
               Get In Touch
             </a>
-            <a
-              href="#"
+            <button
+              onClick={() => setResumeOpen(true)}
               className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg glass gradient-border font-semibold text-foreground hover:bg-secondary transition-colors"
             >
               <Download size={18} />
               Download Resume
-            </a>
+            </button>
+            <ResumeModal open={resumeOpen} onOpenChange={setResumeOpen} />
           </div>
         </motion.div>
 
