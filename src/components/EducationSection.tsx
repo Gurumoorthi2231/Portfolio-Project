@@ -1,5 +1,37 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Award, Briefcase } from "lucide-react";
+import { GraduationCap, Award, Briefcase, Calendar } from "lucide-react";
+
+const education = [
+  {
+    degree: "B.Tech Artificial Intelligence & Data Science",
+    college: "P.S.R.R College of Engineering",
+    university: "Anna University",
+    score: "CGPA: 7.9",
+    location: "Sivakasi",
+    date: "Aug 2022 – May 2026",
+  },
+  {
+    degree: "HSC",
+    college: "VOC Government Higher Secondary School",
+    score: "65%",
+    location: "Kovilpatti",
+    date: "Jun 2021 – May 2022",
+  },
+  {
+    degree: "SSLC",
+    college: "VOC Government Higher Secondary School",
+    score: "61%",
+    location: "Kovilpatti",
+    date: "Jun 2019 – Mar 2020",
+  },
+];
+
+const certifications = [
+  { name: "Web Development Training", org: "Alpha Learning Lume", date: "March 2025" },
+  { name: "UI Automation with Design Studios", org: null, date: "April 2024" },
+  { name: "Getting Started with MongoDB Atlas", org: "MongoDB", date: "January 2024" },
+  { name: "MongoDB CRUD Operations", org: "MongoDB", date: "January 2024" },
+];
 
 const EducationSection = () => {
   return (
@@ -12,9 +44,7 @@ const EducationSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-sm tracking-widest uppercase text-primary mb-3">
-            My Journey
-          </p>
+          <p className="text-sm tracking-widest uppercase text-primary mb-3">My Journey</p>
           <h2 className="text-3xl sm:text-4xl font-bold font-display gradient-text inline-block">
             Education & Experience
           </h2>
@@ -35,22 +65,25 @@ const EducationSection = () => {
               </div>
               <h3 className="text-xl font-bold font-display text-foreground">Education</h3>
             </div>
-            <div className="space-y-4 ml-2 border-l-2 border-primary/20 pl-6">
-              <div>
-                <h4 className="font-semibold text-foreground">B.Tech (AI & Data Science)</h4>
-                <p className="text-sm text-muted-foreground">P.S.R.R College of Engineering (Anna University), Sivakasi</p>
-                <span className="text-xs text-primary font-medium">CGPA: 7.9</span>
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground">HSC</h4>
-                <p className="text-sm text-muted-foreground">VOC Govt. Higher Secondary School, Kovilpatti</p>
-                <span className="text-xs text-primary font-medium">65%</span>
-              </div>
-              <div>
-                <h4 className="font-semibold text-foreground">SSLC</h4>
-                <p className="text-sm text-muted-foreground">VOC Govt. Higher Secondary School, Kovilpatti</p>
-                <span className="text-xs text-primary font-medium">61%</span>
-              </div>
+            <div className="space-y-5 ml-2 border-l-2 border-primary/20 pl-6">
+              {education.map((ed, i) => (
+                <div key={i} className="group glass rounded-xl p-5 hover-lift">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                    <div className="space-y-1">
+                      <h4 className="font-semibold text-foreground">{ed.degree} — {ed.college}</h4>
+                      {ed.university && (
+                        <p className="text-sm text-muted-foreground">{ed.university}</p>
+                      )}
+                      <p className="text-xs text-primary font-medium">{ed.score}</p>
+                      <p className="text-xs text-muted-foreground">{ed.location}</p>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-xs text-accent font-medium whitespace-nowrap shrink-0 sm:mt-1">
+                      <Calendar size={14} />
+                      <span>{ed.date}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </motion.div>
 
@@ -68,19 +101,22 @@ const EducationSection = () => {
               </div>
               <h3 className="text-xl font-bold font-display text-foreground">Certifications</h3>
             </div>
-            <ul className="space-y-3">
-              {[
-                "Web Development Training — Alpha Learning Lume",
-                "UI Automation with Design Studios",
-                "Getting Started with MongoDB Atlas — MongoDB, Inc.",
-                "MongoDB CRUD Operations — MongoDB, Inc.",
-              ].map((cert, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
-                  {cert}
-                </li>
+            <div className="space-y-4">
+              {certifications.map((cert, i) => (
+                <div key={i} className="group glass rounded-xl p-4 hover-lift flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                  <div className="flex items-start gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">
+                      {cert.name}{cert.org ? ` — ${cert.org}` : ""}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-xs text-accent font-medium whitespace-nowrap shrink-0 ml-4 sm:ml-0">
+                    <Calendar size={14} />
+                    <span>{cert.date}</span>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
           </motion.div>
 
           {/* Internship */}
