@@ -7,7 +7,7 @@ It showcases my skills, projects, certifications, and education as an aspiring *
 
 # 🚀 Live Website
 
-🔗 https:/Gurumoorthi2231.github.io/portfolio
+🔗 https://gurupf.netlify.app
 
 ---
 
