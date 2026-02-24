@@ -4,8 +4,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { GraduationCap, Award, Briefcase, Code, Mail, Phone, MapPin, Calendar, Printer } from "lucide-react";
-import { useRef } from "react";
+import { GraduationCap, Award, Briefcase, Code, Mail, Phone, MapPin, Calendar, Download } from "lucide-react";
 
 interface ResumeModalProps {
   open: boolean;
@@ -13,46 +12,22 @@ interface ResumeModalProps {
 }
 
 const ResumeModal = ({ open, onOpenChange }: ResumeModalProps) => {
-  const printRef = useRef<HTMLDivElement>(null);
-
-  const handleDownload = () => {
-    const content = printRef.current;
-    if (!content) return;
-    const printWindow = window.open('', '_blank');
-    if (!printWindow) return;
-    printWindow.document.write(`
-      <html><head><title>Gurumoorthi B — Resume</title>
-      <style>
-        body { font-family: 'Segoe UI', sans-serif; padding: 40px; color: #1a1a1a; }
-        h2 { font-size: 22px; margin-bottom: 4px; }
-        h3 { font-size: 15px; margin: 18px 0 8px; border-bottom: 1px solid #ddd; padding-bottom: 4px; }
-        p, li, span { font-size: 13px; line-height: 1.6; }
-        .flex { display: flex; justify-content: space-between; }
-        .badge { display: inline-block; background: #e8e8e8; padding: 2px 10px; border-radius: 12px; margin: 2px 4px 2px 0; font-size: 12px; }
-        ul { padding-left: 18px; }
-      </style></head><body>
-      ${content.innerHTML}
-      </body></html>
-    `);
-    printWindow.document.close();
-    printWindow.print();
-  };
-
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto bg-background border-primary/20">
         <DialogHeader className="flex flex-row items-center justify-between pr-8">
           <DialogTitle className="text-2xl font-display gradient-text">Gurumoorthi B — Resume</DialogTitle>
-          <button
-            onClick={handleDownload}
+          <a
+            href="/GURU_MOORTHI_B_2_Data_Analyst.pdf"
+            download="Gurumoorthi_B_Resume.pdf"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
           >
-            <Printer size={16} />
+            <Download size={16} />
             Download PDF
-          </button>
+          </a>
         </DialogHeader>
 
-        <div ref={printRef} className="space-y-6 text-sm">
+        <div className="space-y-6 text-sm">
           {/* Contact */}
           <div className="flex flex-wrap gap-4 text-muted-foreground text-xs">
             <span className="flex items-center gap-1"><Mail size={12} /> gurumoorthi@example.com</span>
