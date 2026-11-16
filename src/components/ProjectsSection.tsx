@@ -8,6 +8,9 @@ import {
   Database,
 } from "lucide-react";
 
+import netflixDashboard1 from "@/assets/netflix-dashboard-1.png";
+import netflixDashboard2 from "@/assets/netflix-dashboard-2.png";
+
 const projects = [
   {
     title: "Bank Loan ID Generation",
@@ -40,6 +43,8 @@ const projects = [
       "Dashboard Design",
     ],
     link: "",
+    image1: netflixDashboard1,
+    image2: netflixDashboard2,
   },
   {
     title: "Retail Sales Analysis",
@@ -90,6 +95,24 @@ const ProjectsSection = () => {
               }}
               className="glass rounded-2xl p-8 hover-lift group flex flex-col"
             >
+              
+{"image1" in project && project.image1 && (
+  <div className="grid grid-cols-2 gap-3 mb-6">
+    <img
+      src={project.image1}
+      alt="Netflix Dashboard 1"
+      className="w-full h-32 object-cover rounded-lg"
+    />
+    {"image2" in project && project.image2 && (
+      <img
+        src={project.image2}
+        alt="Netflix Dashboard 2"
+        className="w-full h-32 object-cover rounded-lg"
+      />
+    )}
+  </div>
+)}
+
               <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:glow-primary transition-shadow duration-300">
                 {project.icon}
               </div>
