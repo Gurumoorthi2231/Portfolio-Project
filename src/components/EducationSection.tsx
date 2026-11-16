@@ -118,6 +118,83 @@ const EducationSection = () => {
               ))}
             </div>
           </motion.div>
+          
+          {/* Professional Experience */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="glass rounded-2xl p-8"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                <Briefcase size={22} />
+              </div>
+              <h3 className="text-xl font-bold font-display text-foreground">
+                Professional Experience
+              </h3>
+            </div>
+
+            <div className="flex flex-col sm:flex-row sm:justify-between gap-3 mb-5">
+              <div>
+                <h4 className="text-lg font-semibold text-foreground">
+                  MIS Executive & Data Analyst
+                </h4>
+                <p className="text-sm text-accent font-medium mt-1">
+                  Mohan Power
+                </p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Supporting First Energy Private Limited (Thermax Group)
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2 text-xs text-accent font-medium">
+                <Calendar size={14} />
+                <span>6 July 2026 – Present</span>
+              </div>
+            </div>
+
+            <ul className="space-y-3">
+              {[
+                "Developing interactive Power BI dashboards for operational performance and equipment breakdown analysis.",
+                "Analyzing operational data, creating visualizations and histograms, and identifying performance trends.",
+                "Extracting data from SCADA systems and preparing Daily Generation Reports (DGR).",
+                "Managing Excel datasets and preparing accurate MIS and analytical reports.",
+                "Calculating clipping losses, monitoring performance indicators, and identifying operational inefficiencies.",
+                "Preparing monthly PowerPoint presentations covering performance insights, operational activities, and site requirements.",
+              ].map((item, index) => (
+                <li
+                  key={index}
+                  className="flex items-start gap-3 text-sm text-muted-foreground"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex flex-wrap gap-2 mt-6">
+              {[
+                "Power BI",
+                "Microsoft Excel",
+                "Data Analysis",
+                "Data Visualization",
+                "MIS Reporting",
+                "SCADA",
+                "Dashboard Development",
+              ].map((skill) => (
+                <span
+                  key={skill}
+                  className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary font-medium"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+
+
 
           {/* Internship */}
           <motion.div
