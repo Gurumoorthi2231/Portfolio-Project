@@ -1,5 +1,12 @@
+
 import { motion } from "framer-motion";
-import { ExternalLink, Landmark, Plane } from "lucide-react";
+import {
+  ExternalLink,
+  Landmark,
+  Plane,
+  BarChart3,
+  Database,
+} from "lucide-react";
 
 const projects = [
   {
@@ -9,6 +16,7 @@ const projects = [
       "Developed a system for generating unique Bank Loan IDs to organize and manage loan records efficiently. Built with SQL and data management best practices for banking systems.",
     icon: <Landmark size={32} />,
     tags: ["SQL", "Data Management", "Banking"],
+    link: "",
   },
   {
     title: "Air Traffic Flow Management",
@@ -17,6 +25,36 @@ const projects = [
       "An ATFM project focusing on optimizing air traffic flow within airspace, managing flight operations to prevent congestion and delays using data analysis techniques.",
     icon: <Plane size={32} />,
     tags: ["Python", "Data Analysis", "Optimization"],
+    link: "",
+  },
+  {
+    title: "Netflix Data Analysis Dashboard",
+    subtitle: "Power BI Project",
+    description:
+      "Developed an interactive Netflix dashboard using Microsoft Power BI to explore movies and TV shows, content distribution, ratings, genres, release years, and country-wise trends. Created visualizations to identify patterns and communicate insights from the Netflix dataset.",
+    icon: <BarChart3 size={32} />,
+    tags: [
+      "Power BI",
+      "Data Visualization",
+      "Data Cleaning",
+      "Dashboard Design",
+    ],
+    link: "",
+  },
+  {
+    title: "Retail Sales Analysis",
+    subtitle: "SQL Data Analysis Project",
+    description:
+      "Performed retail sales data analysis using SQL to explore sales transactions, customer purchasing patterns, product categories, and revenue trends. Used SQL queries to extract meaningful business insights and support data-driven decisions.",
+    icon: <Database size={32} />,
+    tags: [
+      "SQL",
+      "Data Analysis",
+      "Data Aggregation",
+      "Retail Analytics",
+    ],
+    link:
+      "https://github.com/Gurumoorthi2231/Sql_retail_sales_project",
   },
 ];
 
@@ -46,21 +84,28 @@ const ProjectsSection = () => {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="glass rounded-2xl p-8 hover-lift group"
+              transition={{
+                duration: 0.6,
+                delay: (index % 2) * 0.2,
+              }}
+              className="glass rounded-2xl p-8 hover-lift group flex flex-col"
             >
               <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:glow-primary transition-shadow duration-300">
                 {project.icon}
               </div>
+
               <p className="text-xs font-medium text-accent uppercase tracking-wider mb-2">
                 {project.subtitle}
               </p>
+
               <h3 className="text-xl font-bold font-display text-foreground mb-3">
                 {project.title}
               </h3>
+
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">
                 {project.description}
               </p>
+
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.tags.map((tag) => (
                   <span
@@ -71,12 +116,17 @@ const ProjectsSection = () => {
                   </span>
                 ))}
               </div>
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 text-sm text-primary font-medium hover:text-accent transition-colors"
-              >
-                View Project <ExternalLink size={14} />
-              </a>
+
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm text-primary font-medium hover:text-accent transition-colors mt-auto"
+                >
+                  View Project <ExternalLink size={14} />
+                </a>
+              )}
             </motion.div>
           ))}
         </div>
