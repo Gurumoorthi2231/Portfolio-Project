@@ -8,8 +8,10 @@ import {
   Database,
 } from "lucide-react";
 
-import netflixDashboard1 from "@/assets/netflix-dashboard-1.png";
-import netflixDashboard2 from "@/assets/netflix-dashboard-2.png";
+
+import netflixDashboard1 from "@/assets/netflix-dashboard-1..png";
+import netflixDashboard2 from "@/assets/netflix-dashboard-2..png";
+
 
 const projects = [
   {
